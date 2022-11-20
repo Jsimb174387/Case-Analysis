@@ -1,6 +1,7 @@
 import random
 import numpy as np
 from weapon import skin
+from keyvalues import KeyValues
 class case:
     def __init__(self):
         #case skin rarity tiers for basic cs:go cases. They have proper names, but these address them by color
@@ -46,6 +47,9 @@ class case:
             
         return simInventory
 
+
+    
 phantom = case()
-print(phantom.simCaseOpens(10000))
+print(phantom.simCaseOpens(1))
+
 

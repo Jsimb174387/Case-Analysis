@@ -12,5 +12,5 @@ from scipy.stats import bernoulli
 #r = bernoulli.rvs(0.5, 1)
 #print(r)
 
-data = requests.get("https://csgofloat.com/db?name=AK-47%20%7C%20Case%20Hardened&defIndex=7&paintIndex=44&min=0&max=1")
-print(data.content)
+data = requests.get("https://csgostash.com/skin/1301")
+print(data)
