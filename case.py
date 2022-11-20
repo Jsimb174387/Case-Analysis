@@ -7,7 +7,7 @@ class case:
         self.rarities = ['blue','purple','pink','red','yellow']
 
         #skin names in each rarity tier
-        self.blue = ['Jeff', 'Hee']
+        self.blue = ["AWP | Corticera", "AK-47 | Fire Serpent"]
         self.purple = []
         self.pink = []
         self.red = []
@@ -47,5 +47,5 @@ class case:
         return simInventory
 
 phantom = case()
-print(phantom.simCaseOpens(10))
+print(phantom.simCaseOpens(10000))
 
