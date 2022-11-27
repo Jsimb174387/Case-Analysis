@@ -12,10 +12,12 @@ from api_request import requester
 
 api_req = requester()
 
-price = api_req.getPrice('695',0.01)
+price = api_req.get_price('1105',0.01)
 print(price)
+collection = api_req.get_collection('1105')
+print(collection)
 #r = bernoulli.rvs(0.5, 1)
 #print(r)
 #
 # data = requests.get("https://csgostash.com/skin/1301")
-# print(data)
+# print(data
