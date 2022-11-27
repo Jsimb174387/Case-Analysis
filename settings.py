@@ -1,8 +1,10 @@
 
+class keyRet:
+    def __init__(self):
+        
+        __api_key = open("apiKey.txt").read()
 
-key = '23lknfsd'
-
-def getKey():
-    return key
+    def getKey(self):
+        return __api_key
 
 

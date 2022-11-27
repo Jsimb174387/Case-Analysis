@@ -18,11 +18,11 @@ class case:
         #2 yellow per 5 red, 1 red per 5 pinks, 1 pink per 5 purples, 1 purple per 5 blues.
         self.odds = [625/782, 125/782, 25/782, 5/782, 2/782]
 
-    def simRarity(self, amount):
+    def sim_rarity(self, amount):
         return random.choices(self.rarities, self.odds, k = amount)
 
-    def simCaseOpens(self,amount):
-        rarities = self.simRarity(amount)
+    def sim_case_opens(self,amount):
+        rarities = self.sim_rarity(amount)
         #simulated inventory holds the "skins" unboxed.
         simInventory = []
 
@@ -50,6 +50,6 @@ class case:
 
     
 phantom = case()
-print(phantom.simCaseOpens(1))
+print(phantom.sim_case_opens(1))
 
 

@@ -7,14 +7,14 @@ class skin:
         self.min_wear = min_wear
         self.max_wear = max_wear
 
-    def wearName(self, wear):
+    def wear_name(self, wear):
         #FN: 0 - 0.07, MW: 0.07 - 0.15, FT: 0.15 - 0.38, WW: 0.38 - 0.45, BS: 0.45 - 1
         #Float values are NOT uniform in creation chance! As far as we can tell:
         # https://blog.csgofloat.com/analysis-of-float-value-and-paint-seed-distribution-in-cs-go/
         pass
 
 
-    def simWear(self):
+    def sim_wear(self):
         #FN: 0 - 0.07, MW: 0.07 - 0.15, FT: 0.15 - 0.38, WW: 0.38 - 0.45, BS: 0.45 - 1
         #Float values are NOT uniform in creation chance! As far as we can tell:
         # https://blog.csgofloat.com/analysis-of-float-value-and-paint-seed-distribution-in-cs-go/
