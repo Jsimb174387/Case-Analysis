@@ -39,8 +39,10 @@ class skin_parser:
 
                 #get_collection returns item_name, collection
                 collection_info = api_req.get_collection(id)
+
                 while collection_info == 'retry':
                     collection_info = api_req.get_collection(id)
+
                 print(collection_info[0],collection_info[1])
                 filewriter.writerow([collection_info[0], inf_name, id, collection_info[1]])
 

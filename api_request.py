@@ -84,9 +84,9 @@ class requester:
                 sleep(delay)
                 return 'retry'
 
-            if (data.status_code == 200 and data.json() == []):
-                print("ERROR")
-                return "error: skin not found", paint_index
+        if (data.status_code == 200 and data.json() == []):
+            print("ERROR")
+            return "error: skin not found", paint_index
 
         item = data.json()[0]['item']
 
@@ -96,8 +96,10 @@ class requester:
             collection = item['collection']
         else:
             market_name = item['market_hash_name']
+            collection = 'Unknown'
             if 'Knife' in market_name:
                 collection = 'Knife'
             if 'Gloves' in market_name:
                 collection = 'Gloves'
+
         return item_name, collection
