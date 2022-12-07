@@ -4,6 +4,7 @@ import numpy as np
 from scipy.stats import bernoulli
 import json
 from api_request import requester
+import itemParser
 
 
 # payload = {'key1': 'value1', 'key2': 'value2'}
@@ -16,6 +17,7 @@ price = api_req.get_price('1105',0.01)
 print(price)
 collection = api_req.get_collection('1105')
 print(collection)
+
 #r = bernoulli.rvs(0.5, 1)
 #print(r)
 #

@@ -99,7 +99,24 @@ class requester:
             collection = 'Unknown'
             if 'Knife' in market_name:
                 collection = 'Knife'
+            if 'Bayonet' in market_name:
+                collection = 'Knife'
+            if 'Karambit' in market_name:
+                collection = 'Knife'
+            if 'Daggers' in market_name:
+                collection = 'Knife'
+
             if 'Gloves' in market_name:
                 collection = 'Gloves'
-
+            if 'Wraps' in market_name:
+                collection = 'Gloves'
         return item_name, collection
+
+payload = {'paint_index': '568' , 'limit': '10', 'type': 'buy_now',
+                   }
+data = requests.get("https://csgofloat.com/api/v1/listings", params=payload)
+
+for item in data.json():
+    name = item['item']['item_name']
+    print(name)
+
