@@ -100,6 +100,7 @@ class Stream:
 
         while True:
             n = self.GenerateRandomNumber()
+            print('n:')
             print(n)
             if n <= maxAcceptable:
                 break

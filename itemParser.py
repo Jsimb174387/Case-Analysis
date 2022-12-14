@@ -22,16 +22,27 @@ class skin_parser:
         # print(self.item_dict['paintkit_names'][skin])
         # print(self.item_dict['paintkit_ids'][skin])
         # print(rarity)
-    def get_skin_info(self):
-        pass
 
     def get_wear_range_rarity(self, id):
         id = str(id)
         items_game = vdf.load(open("node-csgo-items-parser-master/data/items_game.txt"), mapper=vdf.VDFDict)
 
         skin = items_game['items_game']["paint_kits"][id]
-        default = items_game['items_game']["paint_kits"]['0']
         name = skin['name']
+
+        for element in skin:
+            #print(element + ": ")
+            #print(skin[element])
+            pass
+
+        sets = items_game['items_game']['item_sets']
+        for set in sets:
+            for element in sets[set]['items']:
+                if name in element:
+                    print(element)
+                    print(set)
+
+        default = items_game['items_game']["paint_kits"]['0']
         if name != 'default':
             rarity = items_game['items_game']["paint_kits_rarity"][name]
         else:
@@ -59,10 +70,9 @@ class skin_parser:
 
         #creates csv file to write to
         with open('skins.csv', 'w') as csvfile:
-            filewriter = csv.writer(csvfile, delimiter=',',
-                                    quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            filewriter = csv.writer(csvfile, delimiter=',')
             #Creates header row
-            filewriter.writerow(['skin_name', 'info_name', 'paintkit_id', 'collection', 'rarity', 'min_wear', 'max_wear'])
+            filewriter.writerow(['skin_name', 'info_name', 'paintkit_id', 'collection', 'rarity', 'min_wear', 'max_wear', 'sets'])
 
             for inf_name in info_names:
                 #print(inf_name)
@@ -77,14 +87,60 @@ class skin_parser:
                 print(collection_info[0],collection_info[1])
                 info = f.get_wear_range_rarity(id)
                 filewriter.writerow([collection_info[0], inf_name, id, collection_info[1], info[0], info[1], info[2]])
+        update_skin_set()
+
+def update_skin_set():
+
+    csvLines = []
+    with open('skins.csv', mode='r') as file:
+        # reading the CSV file
+        csvFile = csv.reader(file)
+        # retreiving the contents of the CSV file
+        for lines in csvFile:
+            csvLines.append(lines)
+
+    #opens Items_game to look for item_set (which is not the same as collection name, frustratingly enough)
+    items_game = vdf.load(open("node-csgo-items-parser-master/data/items_game.txt"), mapper=vdf.VDFDict)
+
+    #skips header
+    app_lines = csvLines[1:]
+    update_lines = []
+    for line in app_lines:
+        #line: ['skin_name', 'info_name', 'paintkit_id', 'collection', 'rarity', 'min_wear', 'max_wear', 'set']
+
+        id = line[2]
+        skin = items_game['items_game']["paint_kits"][id]
+        name = skin['name']
+        newLine = line[:7]
+
+        sets = items_game['items_game']['item_sets']
+        for set in sets:
+            for item in sets[set]['items']:
+                read = False
+                comparitor = ''
+
+                for element in item:
+                    if element == ']':
+                        read = False
+                    if read:
+                        comparitor = comparitor + element
+                    if element == '[':
+                        read = True
+                if name == comparitor:
+                    newLine.append(set)
+
+        update_lines.append(newLine)
 
 
+    #overwrites with updated information
+    with open('skins.csv', 'w') as csvfile:
+        filewriter = csv.writer(csvfile, delimiter=',')
+        filewriter.writerow(
+            ['skin_name', 'info_name', 'paintkit_id', 'collection', 'rarity', 'min_wear', 'max_wear', 'sets'])
 
-    def skins_csv_sort(self):
-        pass
-
-
-
+        for line in update_lines:
+            print(line)
+            filewriter.writerow(line)
 
 
 #replaced with skin_parser. May have future use though, which is why it is temp left here.
@@ -95,9 +151,11 @@ class skin_parser:
 
 #dict = d['items_game']
 f = skin_parser()
-d = vdf.load(open('node-csgo-items-parser-master/data/items_game.txt'))
+update_skin_set()
+#r = f.get_wear_range_rarity(259)
+#d = vdf.load(open('node-csgo-items-parser-master/data/items_game.txt'))
 #Take note of ['client_loot_lists']
-print(d['items_game']['revolving_loot_lists']['3'])
+#print(d['items_game']['revolving_loot_lists']['3'])
 #print(f.get_wear_range_rarity('10080'))
 
 
