@@ -139,7 +139,6 @@ def update_skin_set():
             ['skin_name', 'info_name', 'paintkit_id', 'collection', 'rarity', 'min_wear', 'max_wear', 'sets'])
 
         for line in update_lines:
-            print(line)
             filewriter.writerow(line)
 
 

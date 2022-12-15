@@ -8,7 +8,6 @@ class case:
     def __init__(self, collection, rarities = None):
         #case skin rarity tiers for basic cs:go cases. They have proper names, but these address them by color,
         #which is a common short hand in the community
-
         self.collectionName = collection
         self.collectionSkins = obtain_collection(collection)
         self.simInventory = []
@@ -20,18 +19,16 @@ class case:
 
         #skin Array in each rarity tier
         self.rarDict = self.sort_rarity()
-        self.blue = []
-        self.purple = []
-        self.pink = []
-        self.red = []
-        self.yellow = []
-        
 
-        #2 yellow per 5 red, 1 red per 5 pinks, 1 pink per 5 purples, 1 purple per 5 blues.
-        self.odds = [625/782, 125/782, 25/782, 5/782, 2/782]
+        #2 yellow per 5 red, 1 red per 5 pinks, 1 pink per 5 purples, 1 purple per 5 blues. out of 782
+        self.odds = [625, 125, 25, 5, 2]
 
     def sim_rarity(self, amount):
         return random.choices(self.rarities, self.odds, k = amount)
+
+    def knife_unbox(self):
+        #placeholder for inheritance
+        pass
 
     def sort_rarity(self):
         collection = self.collectionSkins
@@ -86,7 +83,8 @@ class case:
                 outcomes = self.rarDict[rarity]
                 info_name = random.choices(outcomes)
             else:
-                pass
+                self.knife_unbox()
+                return
                 
 
             # info provided: skin_name info_name	paintkit_id	collection	rarity	min_wear	max_wear, sets
@@ -179,13 +177,13 @@ if not (create_sent(['Jeff', 'beany', 'is', 'big']) == 'Jeff_beany_is_big'):
 # for skin in col:
 #     print(skin)
 
-phan = case('The Gamma 2 Collection')
-phan.sort_rarity()
-phan.sim_case_opens(100)
-
-for skin in phan.simInventory:
-    print(skin)
-
+# phan = case('The Gamma 2 Collection')
+# phan.sort_rarity()
+# phan.sim_case_opens(100)
+#
+# for skin in phan.simInventory:
+#     print(skin)
+#
 
 
 

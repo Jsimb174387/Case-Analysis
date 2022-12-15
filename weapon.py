@@ -8,6 +8,8 @@ class skin:
         self.rarity = rarity
         self.min_wear = float(min_wear)
         self.max_wear = float(max_wear)
+        self.stattrack = random.choices([True, False], weights = [1,9])
+
         if seed == None:
             self.seed = random.randint(-2147483648, 2147483647)
         else:
