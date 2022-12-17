@@ -4,6 +4,7 @@ import random
 
 class skin:
     def __init__(self, name, rarity, min_wear, max_wear, seed = None):
+        self.name = name
         self.rarity = rarity
         self.min_wear = float(min_wear)
         self.max_wear = float(max_wear)
@@ -16,8 +17,8 @@ class skin:
 
         self.wear =  sim_wear(self.seed, self.min_wear, self.max_wear)
         self.wear_name = self.wear_to_name(self.wear)
-        self.name = name + ' ' + self.wear_to_name(self.wear)[0]
-        print(self.name)
+        self.hash = name + ' ' + self.wear_to_name(self.wear)[0]
+        print(self.hash)
 
 
     def wear_to_name(self, wear: float):
