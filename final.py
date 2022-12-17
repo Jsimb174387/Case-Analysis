@@ -11,6 +11,8 @@ import csv
 import vdf
 from spectrum2 import *
 from simulations import simulate
+import priceFinder
+import spectPriceUpdate
 # payload = {'key1': 'value1', 'key2': 'value2'}
 #
 # r = requests.get('https://httpbin.org/get', params=payload)
@@ -28,4 +30,12 @@ from simulations import simulate
 # data = requests.get("https://csgostash.com/skin/1301")
 
 
-simulate(5)
+simulate(10000)
+request = priceFinder.priceRequester
+
+request.gen_price_csv(request, 'Ps2unique.csv')
+request.gen_price_csv(request, 'Pspectunique.csv')
+spectPriceUpdate.unique_to_every('Ps2unique.csv', 's2every.csv', 'Ps2every.csv')
+spectPriceUpdate.unique_to_every('Pspectunique.csv', 'spectevery.csv', 'Pspectevery.csv')
+
+

@@ -17,9 +17,10 @@ class skin:
 
         self.wear =  sim_wear(self.seed, self.min_wear, self.max_wear)
         self.wear_name = self.wear_to_name(self.wear)
-        self.hash = name + ' ' + self.wear_to_name(self.wear)[0]
-        print(self.hash)
-
+        if self.name[-1] == " ":
+            self.hash = name + self.wear_to_name(self.wear)[0]
+        else:
+            self.hash = name + ' ' + self.wear_to_name(self.wear)[0]
 
     def wear_to_name(self, wear: float):
         #also returns range
