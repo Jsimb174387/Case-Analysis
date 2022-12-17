@@ -4,7 +4,6 @@ import random
 
 class skin:
     def __init__(self, name, rarity, min_wear, max_wear, seed = None):
-        self.name = name
         self.rarity = rarity
         self.min_wear = float(min_wear)
         self.max_wear = float(max_wear)
@@ -13,23 +12,26 @@ class skin:
         if seed == None:
             self.seed = random.randint(-2147483648, 2147483647)
         else:
-            self.seed = seed
+            self.seed = see
 
         self.wear =  sim_wear(self.seed, self.min_wear, self.max_wear)
         self.wear_name = self.wear_to_name(self.wear)
+        self.name = name + ' ' + self.wear_to_name(self.wear)[0]
+        print(self.name)
+
 
     def wear_to_name(self, wear: float):
         #also returns range
         if 0.00 < wear < 0.07:
-            return ['FN', '0.00', '0.07']
+            return ['(Factory New)', '0.00', '0.07']
         if 0.07 < wear < 0.15:
-            return ['MW', '0.07', '0.15']
+            return ['(Minimal Wear)', '0.07', '0.15']
         if 0.15 < wear < 0.38:
-            return ['FT', '0.15', '0.38']
+            return ['(Field-Tested)', '0.15', '0.38']
         if 0.38 < wear < 0.45:
-            return ['WW', '0.38', '0.45']
+            return ['(Well-Worn)', '0.38', '0.45']
         if 0.45 < wear < 1.00:
-            return ['BS', '0.45', '1.00']
+            return ['(Battle-Scarred)', '0.45', '1.00']
 
 
 

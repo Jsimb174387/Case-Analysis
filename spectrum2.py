@@ -5,6 +5,7 @@ from weapon import skin
 from keyvalues import KeyValues
 import vdf
 from case import *
+import randomCSGO
 class spectrum(case):
     def __init__(self, collection = None):
         if collection == None:
@@ -45,7 +46,7 @@ class spectrum(case):
             for lines in csvFile:
                 for inf_name in infoArray:
                     if lines[1] == inf_name:
-                        # info_name in collumn 1 (count from 0).
+                        # info_name in column 1 (count from 0).
                         # info provided: skin_name info_name	paintkit_id	collection	rarity	min_wear	max_wear
                         skins.append(lines)
 
@@ -69,6 +70,7 @@ class spectrum(case):
 
         #GAVIN YOU CAN EDIT HOW THIS NAME IS GENERATED, TO MAKE IT EASIER FOR HASH NAME
         #'★ Gut Knife | Doppler'
+            
         name = '★ '
         name += str(knife) + ' | ' + str(finish)
         print(knife)
@@ -93,6 +95,20 @@ def rarity_to_odds(rarity):
         return 25
     if rarity == 'ancient':
         return 5
+
+def float_to_wear(flt):
+    if (flt >= 0) and (flt < 0.07):
+        return 'Factory New'
+    elif flt < 0.15:
+        return 'Minimal Wear'
+    elif flt < 0.38:
+        return 'Field-Tested'
+    elif flt < 0.45:
+        return 'Well-Worn'
+    elif flt <= 1:
+        return 'Battle-Scarred'
+    else:
+        return 'error'
 
 #spect.sim_case_opens(100)
 

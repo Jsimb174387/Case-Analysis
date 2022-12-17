@@ -26,6 +26,10 @@ from spectrum2 import *
 #
 # data = requests.get("https://csgostash.com/skin/1301")
 
-sp = spectrum()
-sp.knife_unbox()
-print(sp.simInventory)
+#sp = spectrum()
+#sp.knife_unbox()
+#print(sp.simInventory)
+
+parser = itemParser.skin_parser()
+
+parser.gen_skins_csv()

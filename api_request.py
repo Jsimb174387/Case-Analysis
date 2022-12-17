@@ -90,7 +90,7 @@ class requester:
 
         item = data.json()[0]['item']
 
-        item_name = item['item_name']
+        item_name = item['market_hash_name']
 
         if 'collection' in item:
             collection = item['collection']

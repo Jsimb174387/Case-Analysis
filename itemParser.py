@@ -25,8 +25,8 @@ class skin_parser:
 
     def get_wear_range_rarity(self, id):
         id = str(id)
-        items_game = vdf.load(open("node-csgo-items-parser-master/data/items_game.txt"), mapper=vdf.VDFDict)
-
+        items_game = vdf.load(open("node-csgo-items-parser-master/data/items_game.txt"), mapper=vdf.VDFDict) 
+        
         skin = items_game['items_game']["paint_kits"][id]
         name = skin['name']
 
@@ -59,7 +59,8 @@ class skin_parser:
             max_wear = default['wear_remap_max']
 
         #return rarity, min_wear, max_wear
-        return items_game['items_game'].keys
+        #items_game['items_game'].keys
+        return rarity, min_wear, max_wear
 
     def gen_skins_csv(self):
         f = skin_parser()
@@ -85,6 +86,7 @@ class skin_parser:
                     collection_info = api_req.get_collection(id)
 
                 print(collection_info[0],collection_info[1])
+                print('here')
                 info = f.get_wear_range_rarity(id)
                 filewriter.writerow([collection_info[0], inf_name, id, collection_info[1], info[0], info[1], info[2]])
         update_skin_set()
@@ -158,4 +160,4 @@ update_skin_set()
 #print(f.get_wear_range_rarity('10080'))
 
 
-#f.gen_skins_csv()
+f.gen_skins_csv()
