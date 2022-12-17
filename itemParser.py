@@ -143,7 +143,7 @@ def update_skin_set():
         for line in update_lines:
             filewriter.writerow(line)
 
-
+    
 #replaced with skin_parser. May have future use though, which is why it is temp left here.
 # #loads csgo items_game file, truncated to remove "items_game" at the beginning. Current version pulled 11/19/2022.
 #d = vdf.load(open('items_game.txt'))
@@ -151,13 +151,8 @@ def update_skin_set():
 #csgo item parser parses items_game.txt to find skin info.
 
 #dict = d['items_game']
-f = skin_parser()
-update_skin_set()
 #r = f.get_wear_range_rarity(259)
 #d = vdf.load(open('node-csgo-items-parser-master/data/items_game.txt'))
 #Take note of ['client_loot_lists']
 #print(d['items_game']['revolving_loot_lists']['3'])
 #print(f.get_wear_range_rarity('10080'))
-
-
-f.gen_skins_csv()

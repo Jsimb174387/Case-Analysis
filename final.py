@@ -10,6 +10,7 @@ import random
 import csv
 import vdf
 from spectrum2 import *
+from simulations import simulate
 # payload = {'key1': 'value1', 'key2': 'value2'}
 #
 # r = requests.get('https://httpbin.org/get', params=payload)
@@ -26,10 +27,5 @@ from spectrum2 import *
 #
 # data = requests.get("https://csgostash.com/skin/1301")
 
-#sp = spectrum()
-#sp.knife_unbox()
-#print(sp.simInventory)
 
-parser = itemParser.skin_parser()
-
-parser.gen_skins_csv()
+simulate(5)
