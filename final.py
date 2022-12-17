@@ -33,9 +33,9 @@ import spectPriceUpdate
 simulate(10000)
 request = priceFinder.priceRequester
 
-request.gen_price_csv(request, 'Ps2unique.csv')
-request.gen_price_csv(request, 'Pspectunique.csv')
-spectPriceUpdate.unique_to_every('Ps2unique.csv', 's2every.csv', 'Ps2every.csv')
+#request.gen_price_csv(request, 's2unique.csv', 'Ps2unique.csv')
+request.gen_price_csv(request, 'spectunique.csv', 'Pspectunique.csv')
+#spectPriceUpdate.unique_to_every('Ps2unique.csv', 's2every.csv', 'Ps2every.csv')
 spectPriceUpdate.unique_to_every('Pspectunique.csv', 'spectevery.csv', 'Pspectevery.csv')
 
 
