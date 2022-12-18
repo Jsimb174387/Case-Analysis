@@ -10,9 +10,11 @@ import random
 import csv
 import vdf
 from spectrum2 import *
-from simulations import simulate
+from simulations import *
 import priceFinder
 import spectPriceUpdate
+from caseCollections import *
+
 # payload = {'key1': 'value1', 'key2': 'value2'}
 #
 # r = requests.get('https://httpbin.org/get', params=payload)
@@ -30,12 +32,12 @@ import spectPriceUpdate
 # data = requests.get("https://csgostash.com/skin/1301")
 
 
-simulate(10000)
-request = priceFinder.priceRequester
+#simulate(10000)
+#request = priceFinder.priceRequester
 
 #request.gen_price_csv(request, 's2unique.csv', 'Ps2unique.csv')
-request.gen_price_csv(request, 'spectunique.csv', 'Pspectunique.csv')
+#request.gen_price_csv(request, 'spectunique.csv', 'Pspectunique.csv')
 #spectPriceUpdate.unique_to_every('Ps2unique.csv', 's2every.csv', 'Ps2every.csv')
-spectPriceUpdate.unique_to_every('Pspectunique.csv', 'spectevery.csv', 'Pspectevery.csv')
+#spectPriceUpdate.unique_to_every('Pspectunique.csv', 'spectevery.csv', 'Pspectevery.csv')
 
-
+case = simCase('horizon', 1000000, 'horizon')

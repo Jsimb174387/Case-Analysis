@@ -60,6 +60,8 @@ class case:
             if short != 'yellow':
                 vArray = []
                 for name in crates[key]:
+                    #print(short)
+                    #print(name)
                     value = ''
                     read = False
                     for element in name:
@@ -77,22 +79,25 @@ class case:
     def sim_case_opens(self,amount):
         rarities = self.sim_rarity(amount)
         #simulated inventory holds the "skins" unboxed.
-
         for rarity in rarities:
+            knifeGen = False
             if rarity != 'yellow':
                 outcomes = self.rarDict[rarity]
                 info_name = random.choices(outcomes)
             else:
                 self.knife_unbox()
-                return
+                knifeGen = True
+
                 
 
             # info provided: skin_name info_name	paintkit_id	collection	rarity	min_wear	max_wear, sets
-            for sInfo in self.collectionSkins:
-                if sInfo[1] == info_name[0]:
-                    newSkin = skin(sInfo[0], sInfo[4], sInfo[5], sInfo[6])
-                    self.simInventory.append(newSkin)
-
+            if not knifeGen:
+                for sInfo in self.collectionSkins:
+                    if sInfo[1] == info_name[0]:
+                        newSkin = skin(sInfo[0], sInfo[4], sInfo[5], sInfo[6])
+                        self.simInventory.append(newSkin)
+    def __repr__(self):
+        return str(self.simInventory)
 
 def rarity_to_short(rarity):
     #cases do not include greys and light blues

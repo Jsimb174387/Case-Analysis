@@ -7,6 +7,8 @@ import vdf
 from case import *
 import randomCSGO
 class spectrum(case):
+    #To be honest this should be named like "Knife Case" and use that to create the Spectrum 2 Case, but It's too late
+    #to do it like that.
     def __init__(self, collection = None):
         if collection == None:
             self.collection = 'The Spectrum 2 Collection'
@@ -17,8 +19,12 @@ class spectrum(case):
         #market hash before udi example: ★ Bayonet | Tiger Tooth (Factory New)
         #has to be hard coded bc of how knives work
         self.knives = ['Bowie Knife', 'Shadow Daggers', 'Huntsman Knife', 'Falchion Knife', 'Butterfly Knife']
+
+        #Chroma Finishes
         self.finishes = ['Tiger Tooth', 'Doppler', 'Ultraviolet', 'Damascus Steel', 'Rust Coat', 'Marble Fade']
 
+
+        #Chroma finishes
         self.itemDict = {
             'Tiger Tooth': ['an_tiger_orange'], 
             'Doppler': ['am_ruby_marbleized', 'am_sapphire_marbleized', 'am_blackpearl_marbleized','am_doppler_phase1',
@@ -73,10 +79,10 @@ class spectrum(case):
             
         name = '★ '
         name += str(knife) + ' | ' + str(finish)
-        print(knife)
-        print(finish)
+        #print(knife)
+        #print(finish)
 
-        print(infoName)
+        #print(infoName)
         for line in skins:
             if line[1] == infoName:
                 kInfo = line

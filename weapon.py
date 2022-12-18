@@ -38,7 +38,7 @@ class skin:
 
 
     def __repr__(self):
-        return self.name
+        return self.hash
 
 def sim_wear(seed, min, max):
     #FN: 0 - 0.07, MW: 0.07 - 0.15, FT: 0.15 - 0.38, WW: 0.38 - 0.45, BS: 0.45 - 1
