@@ -9,6 +9,7 @@ class skin:
         self.min_wear = float(min_wear)
         self.max_wear = float(max_wear)
         self.stattrack = random.choices([True, False], weights = [1,9])
+        print(self.stattrack)
 
         if seed == None:
             self.seed = random.randint(-2147483648, 2147483647)
@@ -17,10 +18,15 @@ class skin:
 
         self.wear =  sim_wear(self.seed, self.min_wear, self.max_wear)
         self.wear_name = self.wear_to_name(self.wear)
+
+        # StatTrak™
+        ST = ''
+        if self.stattrack[0]:
+            ST += 'StatTrak™ '
         if self.name[-1] == " ":
-            self.hash = name + self.wear_to_name(self.wear)[0]
+            self.hash = ST + name + self.wear_to_name(self.wear)[0]
         else:
-            self.hash = name + ' ' + self.wear_to_name(self.wear)[0]
+            self.hash = ST + name + ' ' + self.wear_to_name(self.wear)[0]
 
     def wear_to_name(self, wear: float):
         #also returns range
