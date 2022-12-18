@@ -68,7 +68,7 @@ class requester:
             if (data.status_code != 429):
                 return "error: failed status code"
             else:
-                delay = 30
+                delay = 60
                 sleep(delay)
                 return self.get_price_steamAPI(self, hash)
 
@@ -80,8 +80,10 @@ class requester:
         if (not 'lowest_price' in keys):
             return 'ERROR Price not found'
         price = data.json()['lowest_price']
-        volume = data.json()['volume']
-
+        if ('volume' in keys):
+            volume = data.json()['volume']
+        else:
+            volume = 'error'
         return [price, volume]
 
     def wear_to_name(self, wear: float):
