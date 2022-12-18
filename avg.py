@@ -1,6 +1,7 @@
 import csv
+from api_request import *
 
-def avg(collectionName, csvName):
+def avg(caseHashName, csvName):
     if collectionName == 'Spectrum'
     #Collection same: Spectrum or Spectrum 2
     #spectrum price = 0.97
@@ -30,6 +31,14 @@ def avg(collectionName, csvName):
                     totalPriceSkins += int(lines[1])
         print(totalPriceSkins/100)
         print(totalNumberSkins)
-avg('Spectrum', 'Ps2every.csv')
+
+        f = requester()
+        casePrice = f.get_price_steamAPI(caseHashName)[0]
+        casePrice * 100 #casePrice is in dollars, not cents
+
+        openPrice = casePrice + keyPrice
+        totalCost = openPrice * totalNumberSkins
+
+        expectedRet = float(totalPriceSkins) / float(totalCost)
 
     
