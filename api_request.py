@@ -60,6 +60,26 @@ class requester:
         url = 'https://steamcommunity.com/market/priceoverview/?country=US&currency=1&appid=730&market_hash_name='
         data = requests.get(url + encoded_hash)
         print(data.status_code)  # should be 200
+
+        if (data.status_code != 200):
+            print('ERROR: request status code not 200, it is', data.status_code)
+
+            #status code 429 is timeout for too many api calls
+            if (data.status_code != 429):
+                return "error: failed status code"
+            else:
+                delay = 30
+                sleep(delay)
+                return self.get_price_steamAPI(hash)
+
+        if (data.status_code == 200 and data.json() == []):
+            print("ERROR")
+            return "error: skin not found"
+
+
+        keys = data.json().keys()
+        if not 'lowest_price' in keys:
+            return 'ERROR Price not found'
         price = data.json()['lowest_price']
         volume = data.json()['volume']
 
@@ -135,7 +155,3 @@ class requester:
 #         print(element + ':')
 #         print(name[element])
 #
-#
-# f = requester()
-# data = f.get_price_steamAPI('Tec-9 | Snek-9 (Battle-Scarred)')
-# print(data)
