@@ -1,6 +1,9 @@
 import requests
 from settings import keyRet
 from time import sleep
+import vdf
+import json
+import urllib
 
 #guide to requests:
 # payload = {'paint_index': '695', 'sort_by': 'lowest_price', 'limit': '1', 'type': 'buy_now'}
@@ -49,9 +52,19 @@ class requester:
         if 'price' in data.json()[0]:
             floatdb_price = data.json()[0]['price']
 
-
         return market_name, steam_price, floatdb_price
-    
+
+    def get_price_steamAPI(self, hash):
+        #uses hash name to query steam API: has a bunch of useful stuff, but we are using lowest price and volume
+        encoded_hash = urllib.parse.quote(hash)
+        url = 'https://steamcommunity.com/market/priceoverview/?country=US&currency=1&appid=730&market_hash_name='
+        data = requests.get(url + encoded_hash)
+        print(data.status_code)  # should be 200
+        price = data.json()['lowest_price']
+        volume = data.json()['volume']
+
+        return [price, volume]
+
     def wear_to_name(self, wear: float):
         #also returns range
         if 0.00 < wear < 0.07:
@@ -122,3 +135,7 @@ class requester:
 #         print(element + ':')
 #         print(name[element])
 #
+#
+# f = requester()
+# data = f.get_price_steamAPI('Tec-9 | Snek-9 (Battle-Scarred)')
+# print(data)
