@@ -33,15 +33,11 @@ def secure_code(secret = None):
     return(my_token.now())
 
 def get_ref_info(hash):
-    skins = []
     f = open('ref_prices.json',)
     market_data = json.load(f)
     for skin in market_data['prices']:
         if skin['market_hash_name'] == hash:
-            print(skin)
-            skins.append(skin)
-    print(skins)
-
+            return skin['price']
 def ret_market_data():
     # https://bitskins.com/api/v1/get_all_item_prices/?api_key=API_KEY&code=CODE&app_id=APP_ID
     api_key = input('Bitskins API Key: ')
@@ -54,7 +50,6 @@ def ret_market_data():
         json.dump(market, outfile)
 
 def get_market_info(hash):
-    skins = []
     f = open('market_prices.json',)
     market_data = json.load(f)
     for skin in market_data['data']['items']:
