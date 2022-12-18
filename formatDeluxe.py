@@ -18,9 +18,9 @@ import s2finalformat
 
 def FD(case):
 
-    fileUnique = (case) + 'unique.csv'
+    fileUnique = (case) + 'Unique.csv'
 
-    fileEvery = (case) + 'every.csv'
+    fileEvery = (case) + 'Every.csv'
 
     #priceFinder
     request = priceFinder.priceRequester

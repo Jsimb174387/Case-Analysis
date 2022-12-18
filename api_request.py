@@ -21,7 +21,7 @@ class requester:
         wear_info = self.wear_to_name(wear)
 
         payload = {'paint_index': paint_index, 'sort_by': 'lowest_price', 'limit': '1', 'type': 'buy_now',
-                   'min_float': wear_info[1], 'max_float': wear_info[2]
+                   'min_float': wear_info[1], 'max_float': wear_info[2], 'category': '1'
                    }
         data = requests.get("https://csgofloat.com/api/v1/listings", params = payload)
         #print(data)

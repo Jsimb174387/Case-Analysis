@@ -60,6 +60,9 @@ import formatDeluxe
 
 #formatDeluxe.FD('danger')
 
-request = requester()
-
-request.get_price_steamAPI("Talon Knife | Stained (Factory New)")
+#danger = simCase('horizon', 100, 'dangerTEST', "The Danger Zone Collection")
+simulate(100)
+# request = requester()
+#
+# data = request.get_price_steamAPI("Talon Knife | Case Hardened (Field-Tested)")
+# print(data)
