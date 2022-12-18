@@ -14,7 +14,7 @@ from simulations import *
 import priceFinder
 import spectPriceUpdate
 from caseCollections import *
-
+import formatDeluxe
 # payload = {'key1': 'value1', 'key2': 'value2'}
 #
 # r = requests.get('https://httpbin.org/get', params=payload)
@@ -57,3 +57,9 @@ from caseCollections import *
 # print('prisma')
 # prisma2 = simCase('prisma', 1000000, 'prisma2', 'The Prisma 2 Collection')
 # print('prisma2')
+
+#formatDeluxe.FD('danger')
+
+request = requester()
+
+request.get_price_steamAPI("Talon Knife | Stained (Factory New)")

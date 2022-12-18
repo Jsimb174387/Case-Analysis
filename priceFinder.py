@@ -2,6 +2,7 @@ import requests
 from settings import keyRet
 from time import sleep
 import csv
+import api_request
 
 #guide to requests:
 # payload = {'paint_index': '695', 'sort_by': 'lowest_price', 'limit': '1', 'type': 'buy_now'}
@@ -25,10 +26,10 @@ class priceRequester:
         #catches potential errors, such as impossible floats for skin and bad response from api
         if (data.status_code != 200):
             print('ERROR: request status code not 200')
-            return "error: failed status code"
+            return ["error: failed status code", "error: failed status code"]
         if (data.status_code == 200 and data.json() == []):
             print("ERROR")
-            return "error: skin not found"
+            return ["error: skin not found", "error: skin not found"]
 
         #print(data.json()[0].keys())
         dict = data.json()[0]['item']
@@ -59,7 +60,9 @@ class priceRequester:
             update_lines = []
             for line in csvLines:
 
-                prices = self.get_price(line[0])
+                request = api_request.requester
+                print(line[0])
+                prices = request.get_price_steamAPI(request, line[0])
                 
                 update_lines.append([line[0], prices[0], prices[1]])
 
@@ -68,7 +71,7 @@ class priceRequester:
         with open(newfilename, mode='w') as csvfile:
             filewriter = csv.writer(csvfile, delimiter=',')
             filewriter.writerow(
-                ['hash_name', 'steam_price', 'floatdb_price'])
+                ['hash_name', 'steam_price', 'volume'])
 
             for line in update_lines:
                 filewriter.writerow(line)

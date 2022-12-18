@@ -70,15 +70,14 @@ class requester:
             else:
                 delay = 30
                 sleep(delay)
-                return self.get_price_steamAPI(hash)
+                return self.get_price_steamAPI(self, hash)
 
         if (data.status_code == 200 and data.json() == []):
             print("ERROR")
             return "error: skin not found"
 
-
         keys = data.json().keys()
-        if not 'lowest_price' in keys:
+        if (not 'lowest_price' in keys):
             return 'ERROR Price not found'
         price = data.json()['lowest_price']
         volume = data.json()['volume']
