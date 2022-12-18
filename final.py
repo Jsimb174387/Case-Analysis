@@ -40,4 +40,21 @@ from caseCollections import *
 #spectPriceUpdate.unique_to_every('Ps2unique.csv', 's2every.csv', 'Ps2every.csv')
 #spectPriceUpdate.unique_to_every('Pspectunique.csv', 'spectevery.csv', 'Pspectevery.csv')
 
-case = simCase('horizon', 1000000, 'horizon')
+#def simCase(caseType, amount, fileName, collection = None):
+
+#case = simCase('horizon', 1000000, 'horizon')
+simulate(1000000)
+print('done sim 1')
+danger = simCase('horizon', 1000000, 'danger', "The Danger Zone Collection")
+print('done sim 2')
+chroma = simCase('chroma', 1000000, 'chroma')
+print('done sim 3')
+chroma2 = simCase('chroma', 1000000, 'chroma2', 'The Chroma 2 Collection')
+print('chroma 2')
+chroma3 = simCase('chroma', 1000000, 'chroma3', 'The Chroma 3 Collection')
+print('chroma 3')
+prisma = simCase('prisma', 1000000, 'prisma')
+print('prisma')
+prisma2 = simCase('prisma', 1000000, 'prisma2', 'The Prisma 2 Collection')
+print('prisma2')
+
