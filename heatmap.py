@@ -62,23 +62,27 @@ df = df.drop('volume', axis=1)
 df = df.drop('wear', axis=1)
 df = df.drop('name', axis=1)
 df = df.drop('hash_name', axis=1)
-df_empty = pd.DataFrame({'price_avg' : []})
-df_empty['price_avg'] = df.groupby(['case_name', 'case_price'])['price'].transform(np.mean)
+df_empty = pd.DataFrame({'price_max' : []})
+df_empty['price_max'] = df.groupby(['case_name', 'case_price'])['price'].transform(max)
 df = df.drop('price', axis=1)
-df['price_avg'] = df_empty['price_avg']
+df['price_max'] = df_empty['price_max']
 df = df.drop_duplicates()
+
+cor = plt.subplots()
 
 cor = sns.lmplot(data = df,
                  x = 'case_price',
-                 y = 'price_avg',
-                 hue = 'case_name',
-                 order = 1,
-                 logistic = False,
-                 y_jitter=0.03)
+                 y = 'price_max',
+                 hue = 'case_name')
+
+cor = sns.regplot(data = df,
+                    x = 'case_price',
+                    y = 'price_max',
+                    scatter = False)
 
 fig = cor.figure
 
-fig.savefig('coravg.svg')
+fig.savefig('cormax.svg')
 
 """
 cases = ['chroma', 'chroma2', 'chroma3', 'danger', 'horizon', 'prisma', 'prisma2', 'spect', 's2']
