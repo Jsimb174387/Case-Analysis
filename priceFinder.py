@@ -3,6 +3,7 @@ from settings import keyRet
 from time import sleep
 import csv
 import api_request
+import bitskinsAPI
 
 #guide to requests:
 # payload = {'paint_index': '695', 'sort_by': 'lowest_price', 'limit': '1', 'type': 'buy_now'}
@@ -60,9 +61,7 @@ class priceRequester:
             update_lines = []
             for line in csvLines:
 
-                request = api_request.requester
-                print(line[0])
-                prices = request.get_price_steamAPI(request, line[0])
+                prices = bitskinsAPI.get_market_info(line[0])
                 
                 update_lines.append([line[0], prices[0], prices[1]])
 

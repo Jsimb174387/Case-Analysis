@@ -41,7 +41,7 @@ import formatDeluxe
 #spectPriceUpdate.unique_to_every('Pspectunique.csv', 'spectevery.csv', 'Pspectevery.csv')
 
 #def simCase(caseType, amount, fileName, collection = None):
-
+"""
 case = simCase('horizon', 1000000, 'horizon')
 simulate(1000000)
 print('done sim 1')
@@ -57,7 +57,7 @@ prisma = simCase('prisma', 1000000, 'prisma')
 print('prisma')
 prisma2 = simCase('prisma', 1000000, 'prisma2', 'The Prisma 2 Collection')
 print('prisma2')
-
+"""
 #formatDeluxe.FD('danger')
 
 #danger = simCase('horizon', 100, 'dangerTEST', "The Danger Zone Collection")
@@ -65,3 +65,7 @@ print('prisma2')
 #
 # data = request.get_price_steamAPI("Talon Knife | Case Hardened (Field-Tested)")
 # print(data)
+
+cases = ['chroma', 'chroma2', 'chroma3', 'danger', 'horizon', 'prisma', 'prisma2', 'spect', 's2']
+
+formatDeluxe.FD(cases)
